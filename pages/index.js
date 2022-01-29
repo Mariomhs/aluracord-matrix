@@ -68,7 +68,7 @@ export default function PaginaInicial() {
                         onSubmit={function (infosDoEvento) {
                             infosDoEvento.preventDefault();
                             console.log('Alguém submeteu o form')
-                            roteamento.push('/chat');
+                            roteamento.push(`/chat?username=${username}`);
                             //windows.location.href = '/chat';
                         }}
                         styleSheet={{
@@ -102,7 +102,7 @@ export default function PaginaInicial() {
                                 const valor = event.target.value;
                                 // Trocar o valor da variável
                                 //através do react e avise quem precisa
-                                setUsername(valor);
+                                setUsername(valor);                                
                             }}
                             fullWidth
                             textFieldColors={{
@@ -150,7 +150,7 @@ export default function PaginaInicial() {
                                 borderRadius: '50%',
                                 marginBottom: '16px',
                             }}
-                            src={`https://github.com/${username}.png`}
+                            src={`https://github.com/${username.length > 3 ? username : ''}.png`}
                         />
                         <Text
                             variant="body4"
@@ -161,7 +161,7 @@ export default function PaginaInicial() {
                                 borderRadius: '1000px'
                             }}
                         >
-                            {username}
+                            {username.length > 3 ? username : ''}
                         </Text>
                     </Box>
                     {/* Photo Area */}
